@@ -12,7 +12,8 @@ export class BookService {
   }
 
   public async getAll(order: string): Promise<BookPreview[]> {
-    const url = `${environment.baseApiUrl}/api/books/${order}`;
+    const queryParams = `?order=${encodeURIComponent(order)}`
+    const url = `${environment.baseApiUrl}/api/books/${queryParams}`;
     const response = this.httpClient.get<BookPreview[]>(url);
 
     return await lastValueFrom(response);

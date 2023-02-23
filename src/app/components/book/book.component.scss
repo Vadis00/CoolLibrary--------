@@ -1,0 +1,39 @@
+.row {
+  display: flex;
+  height: 100px;
+  margin: 10px;
+}
+
+.cover {
+  flex: 20%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid red;
+  padding: 10px;
+  .img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+.description{
+  flex: 70%;
+  padding: 10px;
+  border: 1px solid yellow;
+
+  .title{
+    text-align: center;
+    margin: 0px;
+  }
+  .reactions-wrapper {
+    display: flex;
+
+    p{
+      padding: 10px;
+    }
+  }
+
+}

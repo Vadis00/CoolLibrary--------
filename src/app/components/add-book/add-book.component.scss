@@ -1,0 +1,60 @@
+.conteiner {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #413832;
+}
+
+.title {
+  padding: 10px 20px;
+  color: #413832;
+  font-size: 1.5rem;
+  border-bottom: 3px solid #413832;
+  background: white;
+}
+
+.row {
+  display: flex;
+
+  .column {
+    flex: 20%;
+    display: flex;
+    flex-direction: column;
+
+    .input-wrapper{
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input{
+      width: 100%;
+     float: right;
+    }
+    textarea {
+      background: #f7f7f7;
+      height: 100%;
+      margin-bottom: 25px;
+      padding: 10px;
+      resize: none;
+    }
+  }
+}
+
+.action{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+
+  .btn{
+    margin: 10px;
+    width: 100px;
+  }
+}
+
+.wrapper {
+  z-index: 1;
+  transform: translateY(0%);
+}
+
+
