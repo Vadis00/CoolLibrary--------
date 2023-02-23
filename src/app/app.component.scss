@@ -1,3 +1,12 @@
-.conteiner{
+.conteiner {
+  display: flex;
+  flex-direction: column;
   font-family: futura-pt, sans-serif;
+  max-height: 100vh;
+  height: 100vh;
+}
+
+.book-list {
+  flex-grow: 3;
+  overflow: scroll;
 }

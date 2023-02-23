@@ -1,11 +1,11 @@
 .conteiner {
-  padding: 10px;
-  margin: 10px;
+  padding: 5px;
+  margin: 5px;
   border: 1px solid #413832;
 }
 
 .title {
-  padding: 10px 20px;
+  padding: 5px 10px;
   color: #413832;
   font-size: 1.5rem;
   border-bottom: 3px solid #413832;
@@ -21,7 +21,7 @@
     flex-direction: column;
 
     .input-wrapper{
-      padding: 10px 20px;
+      padding: 0px 20px;
       display: flex;
       flex-direction: column;
     }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NewBook } from './shared/models/book';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CoolLibrary';
+  books: NewBook[];
+
+  pushNewBook(book: NewBook) {
+    this.books.push(book);
+  }
+
+  allBookUploaded(books: any) {
+    this.books = books;
+  }
 }

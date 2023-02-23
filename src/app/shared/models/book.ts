@@ -16,7 +16,7 @@ export interface BookPreview {
 }
 
 export interface NewBook {
-  id: number;
+  id?: number;
   title: string;
   author: string;
   cover: string;
