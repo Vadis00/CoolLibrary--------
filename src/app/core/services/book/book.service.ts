@@ -19,6 +19,14 @@ export class BookService {
     return await lastValueFrom(response);
   }
 
+  public async getTopRate(ganre: string): Promise<BookPreview[]> {
+    const queryParams = `?genre=${(ganre)}`
+    const url = `${environment.baseApiUrl}/api/recommended/${queryParams}`;
+    const response = this.httpClient.get<BookPreview[]>(url);
+
+    return await lastValueFrom(response);
+  }
+
   public async getById(id: string): Promise<BookPreview> {
     const url = `${environment.baseApiUrl}/api/books/${id}`;
     const response = this.httpClient.get<BookPreview>(url);

@@ -1,11 +1,29 @@
 <div class="conteiner">
   <div class="categories">
     <ul>
-      <li class="active">All</li>
-      <li>Recommended</li>
-    </ul>
-<app-search class="search" ></app-search>
+      <li>
+        <mat-form-field>
+          <mat-label>Get all books</mat-label>
+          <mat-select class="topunit" [(ngModel)]="selectedBooksSorted">
+            <mat-option (click)="getAllBooks(book.value)" *ngFor="let book of booksSorted" [value]="book.value">
+              {{book.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </li>
+      <li>
+        <mat-form-field>
+          <mat-label>Recommended</mat-label>
+          <mat-select class="topunit" [(ngModel)]="selectedRecomendedBooks">
+            <mat-option (click)="getTopRate(book.viewValue)" *ngFor="let book of recomendedBooks" [value]="book.value">
+              {{book.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
+      </li>
+    </ul>
+    <app-search class="search"></app-search>
 
   </div>
   <div class="book-list">

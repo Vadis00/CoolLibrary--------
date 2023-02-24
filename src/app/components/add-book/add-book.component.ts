@@ -10,7 +10,7 @@ import { NewBook } from 'src/app/shared/models/book';
 })
 export class AddBookComponent implements OnInit {
   @Output() newBookEvent = new EventEmitter<NewBook>();
-
+  panelOpenState = false;
   public newBookForm: FormGroup;
   newBook: NewBook = {
     title: '',

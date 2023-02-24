@@ -1,55 +1,65 @@
-<form [formGroup]="newBookForm">
-  <div class="conteiner">
-    <h2 class="title">Add Book</h2>
-    <div class="wrapper">
-      <div class="underline"></div>
-      <div class="row">
-        <div class="column">
-          <mat-form-field class="input-wrapper">
-            <mat-label>Title</mat-label>
-            <input [formControlName]="'title'" type="text" matInput>
-            <mat-error *ngIf="newBookForm.controls['title'].touched && newBookForm.controls['title'].hasError('required')">
-              This field is required
-            </mat-error>
-          </mat-form-field>
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header class="accordion-title">
+      <mat-panel-title  >
+        Add new Book
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <form [formGroup]="newBookForm">
+      <div class="conteiner">
+        <h2 class="title">Add Book</h2>
+        <div class="wrapper">
+          <div class="underline"></div>
+          <div class="row">
+            <div class="column">
+              <mat-form-field class="input-wrapper" appearance="outline">
+                <mat-label>Title</mat-label>
+                <input [formControlName]="'title'" type="text" matInput>
+                <mat-error *ngIf="newBookForm.controls['title'].touched && newBookForm.controls['title'].hasError('required')">
+                  This field is required
+                </mat-error>
+              </mat-form-field>
 
-          <mat-form-field class="input-wrapper">
-            <mat-label>Cover</mat-label>
-            <input formControlName="cover" type="text" matInput>
-            <mat-error *ngIf="newBookForm.controls['cover'].touched && newBookForm.controls['cover'].hasError('required')">
-              This field is required
-            </mat-error>
-          </mat-form-field>
+              <mat-form-field class="input-wrapper" appearance="outline">
+                <mat-label>Cover</mat-label>
+                <input formControlName="cover" type="text" matInput>
+                <mat-error *ngIf="newBookForm.controls['cover'].touched && newBookForm.controls['cover'].hasError('required')">
+                  This field is required
+                </mat-error>
+              </mat-form-field>
 
-          <mat-form-field class="input-wrapper">
-            <mat-label>Genre</mat-label>
-            <input formControlName="genre" type="text" matInput>
-            <mat-error *ngIf="newBookForm.controls['genre'].touched && newBookForm.controls['genre'].hasError('required')">
-              This field is required
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="input-wrapper">
-            <mat-label>Author</mat-label>
-            <input formControlName="author" type="text" matInput>
-            <mat-error *ngIf="newBookForm.controls['author'].touched && newBookForm.controls['author'].hasError('required')">
-              This field is required
-            </mat-error>
-          </mat-form-field>
+              <mat-form-field class="input-wrapper" appearance="outline">
+                <mat-label>Genre</mat-label>
+                <input formControlName="genre" type="text" matInput>
+                <mat-error *ngIf="newBookForm.controls['genre'].touched && newBookForm.controls['genre'].hasError('required')">
+                  This field is required
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="input-wrapper" appearance="outline">
+                <mat-label>Author</mat-label>
+                <input formControlName="author" type="text" matInput>
+                <mat-error *ngIf="newBookForm.controls['author'].touched && newBookForm.controls['author'].hasError('required')">
+                  This field is required
+                </mat-error>
+              </mat-form-field>
 
-        </div>
+            </div>
 
-        <div class="column">
-          <textarea formControlName="content" placeholder="Content"></textarea>
-          <mat-error
-            *ngIf="newBookForm.controls['content'].touched && newBookForm.controls['content'].hasError('required')">
-            This field is required
-          </mat-error>
+            <div class="column">
+              <textarea formControlName="content" placeholder="Content"></textarea>
+              <mat-error
+                *ngIf="newBookForm.controls['content'].touched && newBookForm.controls['content'].hasError('required')">
+                This field is required
+              </mat-error>
+            </div>
+          </div>
+          <div class="action">
+            <button (click)="submit()" class="btn" mat-raised-button color="accent">Add</button>
+            <button (click)="resetForm()" class="btn" mat-raised-button color="primary">Clear</button>
+          </div>
         </div>
       </div>
-      <div class="action">
-        <button (click)="submit()" class="btn" mat-raised-button color="accent">Add</button>
-        <button (click)="resetForm()" class="btn" mat-raised-button color="primary">Clear</button>
-      </div>
-    </div>
-  </div>
-</form>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>

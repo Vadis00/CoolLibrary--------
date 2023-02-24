@@ -10,15 +10,40 @@ import { Book, BookPreview } from 'src/app/shared/models/book';
 export class BookListComponent implements OnInit {
   @Output() allBookUploaded = new EventEmitter<BookPreview[]>();
   books: BookPreview[];
-  constructor(public bookService: BookService) {
 
+  selectedBooksSorted: string ='title';
+  selectedRecomendedBooks: string;
+
+  booksSorted: any[] = [
+    {value: 'title', viewValue: 'Sorted by Title'},
+    {value: 'author', viewValue: 'Sorted by Author'},
+  ];
+
+  recomendedBooks: any[] = [
+    {value: 'it', viewValue: 'Information Technology'},
+    {value: 'philosophy', viewValue: 'Philosophy'},
+    {value: 'historical', viewValue: 'Historical'},
+  ];
+
+  constructor(public bookService: BookService) {
    }
 
  async ngOnInit() {
     this.books = await this.bookService.getAll("title");
-    console.log(this.books);
-    this.allBookUploaded.emit(this.books)
-    console.log('this.books');
+    this.allBookUploaded.emit(this.books);
   }
+
+  async getAllBooks(sorted: string) {
+    this.selectedRecomendedBooks =''
+    this.books = await this.bookService.getAll(sorted);
+    this.allBookUploaded.emit(this.books);
+  }
+
+  async getTopRate(sorted: string) {
+    this.selectedBooksSorted = '';
+    this.books = await this.bookService.getTopRate(sorted);
+    this.allBookUploaded.emit(this.books);
+  }
+
 
 }

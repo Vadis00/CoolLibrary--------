@@ -1,8 +1,3 @@
-.conteiner {
-  padding-top: 10px;
-
-}
-
 .categories {
   display: flex;
   align-items: center;
@@ -11,7 +6,20 @@
   width: 100%;
   height: 50px;
   background: #335C7D;
+  z-index: 1;
 
+  ::ng-deep .mat-form-field-flex{
+    background: whitesmoke !important;
+    border-radius: 5px !important;
+    padding: 3px!important;
+  }
+  ::ng-deep .mat-form-field-wrapper{
+    padding: 0px !important;
+  }
+
+  ::ng-deep .mat-form-field-underline {
+    bottom: 0 !important;
+  }
 
   ul {
     display: flex;
@@ -25,15 +33,9 @@
     li {
       margin: 5px;
       padding: 5px;
-      width: 100px;
-      background: whitesmoke;
       text-align: center;
       border-radius: 5px;
       cursor: pointer;
-
-      &:hover {
-        background-color: burlywood;
-      }
     }
 
     .active {
@@ -42,7 +44,7 @@
   }
 
   .search {
-    padding-left: 100px;
+    margin-left: auto;
   }
 }
 
@@ -50,8 +52,6 @@
   display: flex;
   flex-wrap: wrap;
   background: whitesmoke;
-  overflow:scroll;
-
 }
 
 .book {

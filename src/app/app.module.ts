@@ -14,8 +14,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './components/search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { SearchComponent } from './components/search/search.component';
     MatInputModule,
     MatButtonModule,
     MatExpansionModule,
+    MatSelectModule,
+    MatIconModule,
+    FormsModule
   ],
   providers: [BookService],
   bootstrap: [AppComponent]
