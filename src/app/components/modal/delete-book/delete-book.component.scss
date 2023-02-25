@@ -1,0 +1,32 @@
+.conteiner {
+  position: relative;
+  max-width: 80vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  padding: 5px 10px;
+  color: #413832;
+  border-bottom: 3px solid #413832;
+  background: white;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  p {
+    white-space: pre;
+    padding-right: 10px;
+  }
+
+  .input {
+    width: 100%;
+  }
+}

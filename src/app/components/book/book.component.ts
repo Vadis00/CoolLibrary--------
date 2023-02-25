@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Book, BookPreview } from 'src/app/shared/models/book';
 import { BookEditComponent } from '../modal/book-edit/book-edit.component';
 import { BookViewComponent } from '../modal/book-view/book-view.component';
+import { DeleteBookComponent } from '../modal/delete-book/delete-book.component';
 
 @Component({
   selector: 'app-book',
@@ -16,14 +17,25 @@ export class BookComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  bookView() {
+  bookView(): void {
     this.dialog.open(BookViewComponent, {
       data: { id: this.book.id }
     });
   }
 
-  bookEdit() {
+  bookEdit() : void {
     this.dialog.open(BookEditComponent, {
+      data: { id: this.book.id }
+    }).afterClosed()
+    .subscribe(response => {
+      if(response){
+        this.book.title = response.data.title
+      }
+    });;
+  }
+
+  bookDelete(): void {
+    this.dialog.open(DeleteBookComponent, {
       data: { id: this.book.id }
     }).afterClosed()
     .subscribe(response => {

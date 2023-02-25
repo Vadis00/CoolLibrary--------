@@ -24,6 +24,7 @@ import { BookViewComponent } from './components/modal/book-view/book-view.compon
 import { BookEditComponent } from './components/modal/book-edit/book-edit.component';
 import { AlertModule } from 'ngx-alerts';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, POSITION, SPINNER } from "ngx-ui-loader";
+import { DeleteBookComponent } from './components/modal/delete-book/delete-book.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsPosition: POSITION.centerCenter,
@@ -45,6 +46,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SearchComponent,
     BookViewComponent,
     BookEditComponent,
+    DeleteBookComponent,
 
   ],
   imports: [
