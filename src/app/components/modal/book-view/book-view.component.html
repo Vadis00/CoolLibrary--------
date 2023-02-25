@@ -1,0 +1,41 @@
+<div class="conteiner">
+  <div class="book-card">
+    <button (click)="closeDialog()" class="close" mat-button >X</button>
+    <div class="row">
+      <div class="cover">
+        <img class="img"
+          src="https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
+          alt="{{book.title}}">
+      </div>
+      <div class="description">
+        <h2 class="title">{{book.title}}</h2>
+
+        <div class="reactions-wrapper">
+          <p class="rating"><b>Author:</b> {{book.author}}</p>
+          <p class="rating"><b>Rating:</b> {{book.rating}}</p>
+        </div>
+        <div class="reviews">
+          <div class="reviews-text">
+            <p class="msg"> {{ review.message}}</p>
+            <p class="reviewer">{{ review.reviewer}}</p>
+          </div>
+          <div class="reviews-action">
+
+            <ul class="pagination modal">
+              <li *ngIf="reviewPrevious" (click)="getNextReview('previous')"><p class="prev">Previous</p></li>
+              <li *ngIf="reviewNext" (click)="getNextReview('next')"><p  class="next">Next</p></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3 class="read">Read online</h3>
+    <div class="content">
+      {{book.content}}
+    </div>
+  </div>
+
+</div>

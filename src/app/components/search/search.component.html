@@ -1,5 +1,5 @@
 <div class="search-wrapper">
 	<form>
-	<input type="text" name="focus" required class="search-box" placeholder="Enter search term" />
+	<input type="text" [ngModel]="inputText" (ngModelChange)="onSearchChange($event)" name="focus" required class="search-box" placeholder="Enter search term" />
 	</form>
 </div>

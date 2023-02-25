@@ -1,0 +1,153 @@
+.conteiner{
+  max-height: 100vh;
+  position: relative;
+}
+.row {
+  display: flex;
+}
+
+.description-wrapper{
+  display: flex;
+}
+.cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .img {
+    max-height: 100%;
+    max-width: 500px;
+  }
+}
+
+.description{
+  width: 100%;
+  padding: 10px;
+
+  .title{
+    text-align: center;
+    margin: 0px;
+  }
+}
+
+.read{
+  text-align: center;
+  font-size: 19px;
+}
+
+.content{
+  max-width: 100%;
+  word-break: break-all;
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 10px;
+}
+.reactions-wrapper{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.reviews-action{
+  text-align: center;
+}
+
+
+.reviews-text{
+  .msg{
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 16px;
+    &::before{
+      content: open-quote;
+    }
+    &::after{
+      content: close-quote;
+    }
+  }
+
+  .reviewer{
+    text-align: center;
+  }
+}
+
+
+.pagination{
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+}
+
+.pagination li{
+  display: inline;
+  text-align: center;
+}
+
+.pagination p{
+  float: left;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 5px 12px;
+  color: #fff;
+  margin-left: -1px;
+  border: 1px solid transparent;
+  line-height: 1.5;
+}
+
+.pagination p:active{
+  outline: none;
+}
+
+.modal p{
+  margin: 0 5px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 100%;
+  background-color: #468599;
+  transform: translateY(0);
+  transition: all .3s ease-out;
+}
+
+.modal p.prev{
+  border-radius: 50px 0 0 50px;
+  width: 100px;
+}
+
+.modal p.next{
+  border-radius: 0 50px 50px 0;
+  width: 100px;
+}
+
+.modal p:hover{
+  background-color: #FFA100;
+  color: #fff;
+  font-weight: 1000;
+  transform: translateY(1px);
+  transition: all .3s ease-out;
+  cursor: pointer;
+}
+
+.modal p.active, .modal p:active{
+  background-color: #FFA100;
+}
+.close.mat-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  line-height: 19px;
+  min-width: auto;
+}
+
+
+.disable {
+  cursor: not-allowed;
+  background-color: gray !important;
+}

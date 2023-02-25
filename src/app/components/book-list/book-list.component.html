@@ -23,7 +23,7 @@
 
       </li>
     </ul>
-    <app-search class="search"></app-search>
+    <app-search [searchBook]="booksSearch" (resultBook)="updateBooks($event)" class="search"></app-search>
 
   </div>
   <div class="book-list">

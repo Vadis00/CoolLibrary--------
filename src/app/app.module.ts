@@ -16,9 +16,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
+import { BookViewComponent } from './components/modal/book-view/book-view.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     AddBookComponent,
     HeaderComponent,
     SearchComponent,
+    BookViewComponent,
 
   ],
   imports: [
@@ -42,6 +45,7 @@ import { FormsModule } from '@angular/forms';
     MatExpansionModule,
     MatSelectModule,
     MatIconModule,
+    MatDialogModule,
     FormsModule
   ],
   providers: [BookService],

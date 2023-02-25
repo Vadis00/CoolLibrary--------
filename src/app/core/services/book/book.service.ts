@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { BookPreview, NewBook } from 'src/app/shared/models/book';
+import { Book, BookPreview, NewBook } from 'src/app/shared/models/book';
 import { environment } from 'src/environments/environment.local';
 import { firstValueFrom, EMPTY, lastValueFrom, } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -27,9 +27,9 @@ export class BookService {
     return await lastValueFrom(response);
   }
 
-  public async getById(id: string): Promise<BookPreview> {
+  public async getById(id: string): Promise<Book> {
     const url = `${environment.baseApiUrl}/api/books/${id}`;
-    const response = this.httpClient.get<BookPreview>(url);
+    const response = this.httpClient.get<Book>(url);
 
     return await lastValueFrom(response);
   }

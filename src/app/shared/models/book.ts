@@ -1,3 +1,4 @@
+import { Review } from 'src/app/shared/models/review';
 export interface Book {
   id: number;
   title: string;
@@ -5,6 +6,7 @@ export interface Book {
   cover: string;
   content: string;
   rating: number;
+  reviews?: Review[];
 }
 
 export interface BookPreview {
