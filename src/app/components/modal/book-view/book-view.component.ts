@@ -12,9 +12,9 @@ import { Review } from 'src/app/shared/models/review';
 export class BookViewComponent implements OnInit {
   book: Book;
   review: Review;
-  reviewNext: Review;
-  reviewPrevious: Review;
-  reviewIndex = 0;
+  reviewNext: Review ;
+  reviewPrevious: Review ;
+  reviewIndex = 1;
   constructor(public bookService: BookService,
     public dialogRef: MatDialogRef<BookViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -23,16 +23,16 @@ export class BookViewComponent implements OnInit {
   ngOnInit(): void {
     this.loadBook()
   }
-
+  isload = false;
   async loadBook() {
+
     this.book = await this.bookService.getById(this.data.id);
     if (this.book.reviews) {
       this.review = this.book.reviews[0];
       this.reviewNext = this.book.reviews[1];
     }
 
-
-    console.log(this.book);
+    this.isload = true;
   }
 
   getNextReview(type: string) {
@@ -41,23 +41,25 @@ export class BookViewComponent implements OnInit {
 
     switch (type) {
       case 'next':
+        if(this.reviewNext) {
           this.reviewIndex++;
           this.reviewPrevious = this.review;
           this.review = this.reviewNext;
           this.reviewNext = this.book.reviews[this.reviewIndex]
-
+        }
         break;
       case 'previous':
-        if (this.book.reviews[this.reviewIndex - 1])
-          this.reviewIndex--;
-        this.review = this.book.reviews[this.reviewIndex];
-        this.reviewPrevious = this.book.reviews[this.reviewIndex - 1];
-        this.reviewNext = this.book.reviews[this.reviewIndex + 1];
+        if(this.reviewPrevious) {
+        this.reviewIndex--;
+        this.reviewNext = this.review;
+        this.review = this.reviewPrevious;
+        this.reviewPrevious = this.book.reviews[this.reviewIndex-2];
+        }
         break;
     }
   }
 
-  closeDialog(){
+  closeDialog() {
     this.dialogRef.close();
   }
 }

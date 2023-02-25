@@ -19,17 +19,14 @@ export class BookListComponent implements OnInit {
     {value: 'author', viewValue: 'Sorted by Author'},
   ];
 
-  recomendedBooks: any[] = [
-    {value: 'it', viewValue: 'Information Technology'},
-    {value: 'philosophy', viewValue: 'Philosophy'},
-    {value: 'historical', viewValue: 'Historical'},
-  ];
+  genres: string[];
 
   constructor(public bookService: BookService) {
    }
 
  async ngOnInit() {
     this.books = await this.bookService.getAll("title");
+    this.genres = await this.bookService.getGenres();
     this.booksSearch = this.books;
     this.allBookUploaded.emit(this.books);
   }

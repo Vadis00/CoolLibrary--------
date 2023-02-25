@@ -34,6 +34,13 @@ export class BookService {
     return await lastValueFrom(response);
   }
 
+  public async getGenres(): Promise<string[]> {
+    const url = `${environment.baseApiUrl}/api/books/genre`;
+    const response = this.httpClient.get<string[]>(url);
+
+    return await lastValueFrom(response);
+  }
+
   public async deleteById(id: string, secret: string): Promise<any> {
     const url = `${environment.baseApiUrl}/api/books/${id}`;
     const response = this.httpClient.get<BookPreview>(url);

@@ -15,8 +15,8 @@
         <mat-form-field>
           <mat-label>Recommended</mat-label>
           <mat-select class="topunit" [(ngModel)]="selectedRecomendedBooks">
-            <mat-option (click)="getTopRate(book.viewValue)" *ngFor="let book of recomendedBooks" [value]="book.value">
-              {{book.viewValue}}
+            <mat-option (click)="getTopRate(genre)" *ngFor="let genre of genres" [value]="genres">
+              {{genre}}
             </mat-option>
           </mat-select>
         </mat-form-field>

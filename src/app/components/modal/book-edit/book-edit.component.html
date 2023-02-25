@@ -1,0 +1,59 @@
+<div class="conteiner" *ngIf="isload">
+  <button (click)="closeDialog()" class="close" mat-button>X</button>
+  <form [formGroup]="editBookForm">
+    <div class="book-card">
+      <h2 class="title">Edit book</h2>
+      <mat-form-field class="input-wrapper" appearance="outline">
+        <mat-label>Title</mat-label>
+        <input [formControlName]="'title'" type="text" matInput>
+        <mat-error
+          *ngIf="editBookForm.controls['title'].touched && editBookForm.controls['title'].hasError('required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input-wrapper" appearance="outline">
+        <mat-label>Author</mat-label>
+        <input formControlName="author" type="text" matInput>
+        <mat-error
+          *ngIf="editBookForm.controls['author'].touched && editBookForm.controls['author'].hasError('required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input-wrapper" appearance="outline">
+        <mat-label>Cover</mat-label>
+        <input formControlName="cover" type="text" matInput>
+        <mat-error
+          *ngIf="editBookForm.controls['cover'].touched && editBookForm.controls['cover'].hasError('required')">
+          This field is required
+        </mat-error>
+      </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Genre</mat-label>
+          <mat-select formControlName="genre" [(ngModel)]="editBook.genre" name="food">
+            <mat-option *ngFor="let genre of genres" [value]="genre">
+              {{genre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      <div class="content-wrapper">
+        <h3 class="title">Content</h3>
+        <textarea wrap="hard" class="content" formControlName="content" placeholder="Content"></textarea>
+        <mat-error
+          *ngIf="editBookForm.controls['content'].touched && editBookForm.controls['content'].hasError('required')">
+          This field is required
+        </mat-error>
+      </div>
+
+      <div class="action">
+        <button (click)="submit()" class="btn" mat-raised-button color="accent">Uptate</button>
+        <button (click)="resetForm()" class="btn" mat-raised-button color="primary">Clear</button>
+      </div>
+    </div>
+  </form>
+
+
+</div>

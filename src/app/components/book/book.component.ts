@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Book, BookPreview } from 'src/app/shared/models/book';
+import { BookEditComponent } from '../modal/book-edit/book-edit.component';
 import { BookViewComponent } from '../modal/book-view/book-view.component';
 
 @Component({
@@ -18,7 +19,17 @@ export class BookComponent implements OnInit {
   bookView() {
     this.dialog.open(BookViewComponent, {
       data: { id: this.book.id }
-
     });
+  }
+
+  bookEdit() {
+    this.dialog.open(BookEditComponent, {
+      data: { id: this.book.id }
+    }).afterClosed()
+    .subscribe(response => {
+      if(response){
+        this.book.title = response.data.title
+      }
+    });;
   }
 }

@@ -21,6 +21,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { BookViewComponent } from './components/modal/book-view/book-view.component';
+import { BookEditComponent } from './components/modal/book-edit/book-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { BookViewComponent } from './components/modal/book-view/book-view.compon
     HeaderComponent,
     SearchComponent,
     BookViewComponent,
+    BookEditComponent,
 
   ],
   imports: [

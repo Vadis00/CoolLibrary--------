@@ -15,8 +15,8 @@
   align-items: center;
 
   .img {
-    max-height: 100%;
-    max-width: 500px;
+    max-height: 300px;
+    max-width: 100%;
   }
 }
 
@@ -113,6 +113,12 @@
   background-color: #468599;
   transform: translateY(0);
   transition: all .3s ease-out;
+  user-select: none;
+
+  &.disable {
+    cursor: not-allowed;
+    background-color: gray;
+  }
 }
 
 .modal p.prev{
@@ -132,6 +138,15 @@
   transform: translateY(1px);
   transition: all .3s ease-out;
   cursor: pointer;
+
+  &.disable {
+    cursor: not-allowed;
+    background-color: gray ;
+    &:hover{
+      cursor: not-allowed;
+    }
+  }
+
 }
 
 .modal p.active, .modal p:active{
@@ -146,8 +161,3 @@
   min-width: auto;
 }
 
-
-.disable {
-  cursor: not-allowed;
-  background-color: gray !important;
-}
