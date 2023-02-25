@@ -13,7 +13,7 @@
         </mat-form-field>
       </li>
       <li>
-        <mat-form-field>
+        <mat-form-field class="recommended">
           <mat-label>Recommended</mat-label>
           <mat-select class="topunit" [(ngModel)]="selectedRecomendedBooks">
             <mat-option (click)="getTopRate(genre)" *ngFor="let genre of genres" [value]="genres">
@@ -29,7 +29,7 @@
   </div>
   <div class="book-list">
     <div *ngFor="let book of books" class="book">
-      <app-book [book]="book"></app-book>
+      <app-book (remove)="removeBook($event)" [book]="book"></app-book>
     </div>
   </div>
 </div>

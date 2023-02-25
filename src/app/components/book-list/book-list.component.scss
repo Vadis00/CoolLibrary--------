@@ -8,12 +8,13 @@
   background: #335C7D;
   z-index: 1;
 
-  ::ng-deep .mat-form-field-flex{
+  ::ng-deep .mat-form-field-flex {
     background: whitesmoke !important;
     border-radius: 5px !important;
-    padding: 3px!important;
+    padding: 3px !important;
   }
-  ::ng-deep .mat-form-field-wrapper{
+
+  ::ng-deep .mat-form-field-wrapper {
     padding: 0px !important;
   }
 
@@ -56,4 +57,23 @@
 
 .book {
   width: 50%;
+}
+
+@media screen and (max-width: 900px) {
+  .book {
+    width: 100%;
+  }
+
+  .search {
+    display: none;
+  }
+
+  .categories {
+    ul {
+      padding: 0;
+      .recommended {
+        display: none
+      }
+    }
+  }
 }

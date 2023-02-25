@@ -49,12 +49,17 @@ export class AddBookComponent implements OnInit {
         content: this.newBookForm.controls['content'].value,
         genre: this.newBookForm.controls['genre'].value,
       }
-      const bookId = await this.bookService.createOrUpdate(this.newBook);
+      this.bookService.createOrUpdate(this.newBook).then((response) =>{
+        if (response) {
+          this.newBookEvent.emit(this.newBook);
+          this.newBookForm.reset();
+          this.alertService.success('The book has been added! Thank you for your contribution to the development of our library!');
+          this.panelOpenState = true;
+        }
+      }).catch(ex => {
+        this.alertService.danger(ex.error);
+      });
 
-      if (bookId) {
-        this.newBookEvent.emit(this.newBook);
-        this.newBookForm.reset();
-      }
     }
   }
 

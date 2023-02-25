@@ -67,3 +67,14 @@
     color: dimgrey;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .title {
+   font-size: 12px;
+  }
+
+  .description{
+    flex: 100%;
+    padding: 0;
+  }
+}

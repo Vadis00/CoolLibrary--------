@@ -36,16 +36,26 @@ export class BookListComponent implements OnInit {
   async getAllBooks(sorted: string) {
     this.selectedRecomendedBooks = ''
     this.books = await this.bookService.getAll(sorted);
+    this.booksSearch = this.books;
     this.allBookUploaded.emit(this.books);
   }
 
   async getTopRate(sorted: string) {
     this.selectedBooksSorted = '';
     this.books = await this.bookService.getTopRate(sorted);
+    this.booksSearch = this.books;
     this.allBookUploaded.emit(this.books);
   }
 
   updateBooks(books: BookPreview[]) {
     this.books = books;
+  }
+
+  removeBook(book: BookPreview) {
+    const index = this.books.indexOf(book);
+    const indexBooksSearch = this.booksSearch.indexOf(book);
+
+  /*   this.booksSearch.splice(indexBooksSearch, 1); */
+    this.books.splice(index, 1);
   }
 }

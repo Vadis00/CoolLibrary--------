@@ -48,16 +48,16 @@ export class BookEditComponent implements OnInit {
   }
 
   async loadBook() {
-    this.ngxService.startLoader("loader-01");
+    this.ngxService.startLoader("loader-book-edit");
     this.book = await this.bookService.getById(this.data.id);
     this.genres = await this.bookService.getGenres();
-    this.ngxService.stopLoader("loader-01");
+    this.ngxService.stopLoader("loader-book-edit");
     this.isload = true;
   }
 
   async submit() {
     if (this.editBookForm.valid) {
-      this.ngxService.startLoader("loader-01");
+      this.ngxService.startLoader("loader-book-edit");
       this.editBook = {
         id: this.book.id,
         title: this.editBookForm.controls['title'].value,
@@ -68,10 +68,10 @@ export class BookEditComponent implements OnInit {
       }
       this.bookService.createOrUpdate(this.editBook).then((value => {
         this.alertService.success("Book information has been updated!");
-        this.ngxService.stopLoader("loader-01");
+        this.ngxService.stopLoader("loader-book-edit");
         this.dialogRef.close({ data: this.editBook });
       })).catch(err  =>{
-        this.ngxService.stopLoader("loader-01");
+        this.ngxService.stopLoader("loader-book-edit");
         this.alertService.warning(JSON.stringify(err.error.errors));
       })
     };

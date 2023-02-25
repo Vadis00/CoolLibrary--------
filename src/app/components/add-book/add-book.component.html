@@ -49,7 +49,7 @@
             <div class="column">
               <textarea formControlName="content" placeholder="Content"></textarea>
               <mat-error
-                *ngIf="newBookForm.controls['content'].touched && newBookForm.controls['content'].hasError('required')">
+                *ngIf="newBookForm.controls['content'].touched && newBookForm.controls['content'].hasError('required')" class="textarea-error">
                 This field is required
               </mat-error>
             </div>

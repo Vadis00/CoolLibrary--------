@@ -1,15 +1,15 @@
 <div class="conteiner">
   <h3 class="title">Delete the book "Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future" from your library</h3>
 
-<div class="wrapper">
+<div class="wrapper" [formGroup]="deleteBookForm">
   <p>Enter your secret key:</p>
   <mat-form-field class="input" appearance="outline">
     <mat-label>Secret key</mat-label>
-    <input formControlName="cover" type="text" matInput>
+    <input  formControlName="secret" type="password" matInput>
     <mat-error *ngIf="false">
       This field is required
     </mat-error>
   </mat-form-field>
 </div>
-<button class="btn-delete" mat-raised-button color="primary">Delete</button>
+<button (click)="deleteBook()" class="btn-delete" mat-raised-button color="primary">Delete</button>
   </div>

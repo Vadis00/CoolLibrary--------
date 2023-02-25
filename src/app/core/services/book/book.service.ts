@@ -42,8 +42,9 @@ export class BookService {
   }
 
   public async deleteById(id: string, secret: string): Promise<any> {
-    const url = `${environment.baseApiUrl}/api/books/${id}`;
-    const response = this.httpClient.get<BookPreview>(url);
+    const queryParams = `?secret=${(secret)}`
+    const url = `${environment.baseApiUrl}/api/books/${id}/${queryParams}`;
+    const response = this.httpClient.delete<void>(url);
 
     return await lastValueFrom(response);
   }

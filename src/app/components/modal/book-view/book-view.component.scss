@@ -1,14 +1,16 @@
-.conteiner{
+.conteiner {
   max-height: 100vh;
   position: relative;
 }
+
 .row {
   display: flex;
 }
 
-.description-wrapper{
+.description-wrapper {
   display: flex;
 }
+
 .cover {
   display: flex;
   justify-content: center;
@@ -20,22 +22,22 @@
   }
 }
 
-.description{
+.description {
   width: 100%;
   padding: 10px;
 
-  .title{
+  .title {
     text-align: center;
     margin: 0px;
   }
 }
 
-.read{
+.read {
   text-align: center;
   font-size: 19px;
 }
 
-.content{
+.content {
   max-width: 100%;
   word-break: break-all;
   max-height: 300px;
@@ -43,48 +45,52 @@
   overflow-x: hidden;
   padding: 10px;
 }
-.reactions-wrapper{
+
+.reactions-wrapper {
   display: flex;
   flex-direction: column;
   padding: 10px;
   font-size: 18px;
 }
 
-.reviews-action{
+.reviews-action {
   text-align: center;
 }
 
-.reviews-text{
-  .msg{
+.reviews-text {
+  .msg {
     text-align: center;
     font-style: italic;
     font-weight: bold;
     font-size: 16px;
-    &::before{
+
+    &::before {
       content: open-quote;
     }
-    &::after{
+
+    &::after {
       content: close-quote;
     }
   }
-  .reviewer{
+
+  .reviewer {
     text-align: center;
   }
 }
 
 
-.pagination{
+.pagination {
   list-style: none;
   display: inline-block;
   padding: 0;
 }
 
-.pagination li{
+.pagination li {
   display: inline;
   text-align: center;
 }
 
-.pagination p{
+.pagination p {
   float: left;
   display: block;
   font-size: 14px;
@@ -97,11 +103,11 @@
   line-height: 1.5;
 }
 
-.pagination p:active{
+.pagination p:active {
   outline: none;
 }
 
-.modal p{
+.modal p {
   margin: 0 5px;
   padding: 0;
   width: 30px;
@@ -119,17 +125,17 @@
   }
 }
 
-.modal p.prev{
+.modal p.prev {
   border-radius: 50px 0 0 50px;
   width: 100px;
 }
 
-.modal p.next{
+.modal p.next {
   border-radius: 0 50px 50px 0;
   width: 100px;
 }
 
-.modal p:hover{
+.modal p:hover {
   background-color: #FFA100;
   color: #fff;
   font-weight: 1000;
@@ -139,16 +145,19 @@
 
   &.disable {
     cursor: not-allowed;
-    background-color: gray ;
-    &:hover{
+    background-color: gray;
+
+    &:hover {
       cursor: not-allowed;
     }
   }
 }
 
-.modal p.active, .modal p:active{
+.modal p.active,
+.modal p:active {
   background-color: #FFA100;
 }
+
 .close.mat-button {
   position: absolute;
   top: 0;
@@ -156,4 +165,29 @@
   padding: 5px;
   line-height: 19px;
   min-width: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .description {
+    padding: 0px;
+    padding-top: 10px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .reviews-text{
+    .msg{
+      font-size: 12px;
+    }
+  }
+  .reactions-wrapper {
+    font-size: 12px;
+  }
+
 }

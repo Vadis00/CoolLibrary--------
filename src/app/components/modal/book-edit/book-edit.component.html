@@ -1,8 +1,8 @@
-<ngx-ui-loader [loaderId]="'loader-01'"></ngx-ui-loader>
-<div class="conteiner">
+<ngx-ui-loader [loaderId]="'loader-book-edit'"></ngx-ui-loader>
+<div class="conteiner" *ngIf="isload">
   <button (click)="closeDialog()" class="close" mat-button>X</button>
   <form [formGroup]="editBookForm">
-    <div class="book-card" *ngIf="isload">
+    <div class="book-card">
       <h2 class="title">Edit book</h2>
       <mat-form-field class="input-wrapper" appearance="outline">
         <mat-label>Title</mat-label>

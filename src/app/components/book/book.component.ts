@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Book, BookPreview } from 'src/app/shared/models/book';
 import { BookEditComponent } from '../modal/book-edit/book-edit.component';
@@ -12,6 +12,7 @@ import { DeleteBookComponent } from '../modal/delete-book/delete-book.component'
 })
 export class BookComponent implements OnInit {
   @Input() book: BookPreview;
+  @Output() remove = new EventEmitter<BookPreview>();
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -23,25 +24,25 @@ export class BookComponent implements OnInit {
     });
   }
 
-  bookEdit() : void {
+  bookEdit(): void {
     this.dialog.open(BookEditComponent, {
       data: { id: this.book.id }
     }).afterClosed()
-    .subscribe(response => {
-      if(response){
-        this.book.title = response.data.title
-      }
-    });;
+      .subscribe(response => {
+        if (response) {
+          this.book.title = response.data.title
+        }
+      });;
   }
 
   bookDelete(): void {
     this.dialog.open(DeleteBookComponent, {
       data: { id: this.book.id }
     }).afterClosed()
-    .subscribe(response => {
-      if(response){
-        this.book.title = response.data.title
-      }
-    });;
+      .subscribe(response => {
+        if (response.isDelete) {
+          this.remove.emit(this.book);
+        }
+      });
   }
 }
