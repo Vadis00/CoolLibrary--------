@@ -1,7 +1,8 @@
-<div class="conteiner" *ngIf="isload">
+<ngx-ui-loader [loaderId]="'loader-01'"></ngx-ui-loader>
+<div class="conteiner"  >
   <button (click)="closeDialog()" class="close" mat-button>X</button>
   <form [formGroup]="editBookForm">
-    <div class="book-card">
+    <div class="book-card" *ngIf="isload">
       <h2 class="title">Edit book</h2>
       <mat-form-field class="input-wrapper" appearance="outline">
         <mat-label>Title</mat-label>
@@ -32,7 +33,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Genre</mat-label>
-          <mat-select formControlName="genre" [(ngModel)]="editBook.genre" name="food">
+          <mat-select formControlName="genre" [(ngModel)]="book.genre" name="food">
             <mat-option *ngFor="let genre of genres" [value]="genre">
               {{genre}}
             </mat-option>
@@ -50,10 +51,8 @@
 
       <div class="action">
         <button (click)="submit()" class="btn" mat-raised-button color="accent">Uptate</button>
-        <button (click)="resetForm()" class="btn" mat-raised-button color="primary">Clear</button>
+        <button (click)="resetForm()" class="btn" mat-raised-button color="primary">Cancel</button>
       </div>
     </div>
   </form>
-
-
 </div>

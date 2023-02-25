@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Book, BookPreview, NewBook } from 'src/app/shared/models/book';
 import { environment } from 'src/environments/environment.local';
-import { firstValueFrom, EMPTY, lastValueFrom, } from 'rxjs';
+import { lastValueFrom, } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { NewReview } from 'src/app/shared/models/review';
 import { Rating } from 'src/app/shared/models/rating';

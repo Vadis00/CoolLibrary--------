@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AlertService } from 'ngx-alerts';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BookService } from 'src/app/core/services/book/book.service';
 import { Book, NewBook } from 'src/app/shared/models/book';
 import { BookViewComponent } from '../book-view/book-view.component';
@@ -11,6 +13,7 @@ import { BookViewComponent } from '../book-view/book-view.component';
   styleUrls: ['./book-edit.component.scss']
 })
 export class BookEditComponent implements OnInit {
+  isload = false;
   book: Book;
   public editBookForm: FormGroup;
   genres: string[];
@@ -19,51 +22,42 @@ export class BookEditComponent implements OnInit {
     author: '',
     cover: '',
     content: '',
-    genre: 'Newspaper'
+    genre: ''
   };
 
-  selectedValue: string;
-  selectedCar: string;
-
-  foods: any[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
-  ];
-
-  cars: any[] = [
-    { value: 'volvo', viewValue: 'Volvo' },
-    { value: 'saab', viewValue: 'Saab' },
-    { value: 'mercedes', viewValue: 'Mercedes' },
-  ];
   constructor(
     public bookService: BookService,
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<BookViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private alertService: AlertService,
+    private ngxService: NgxUiLoaderService,
   ) { }
 
   async ngOnInit(): Promise<void> {
+
     await this.loadBook()
 
     this.editBookForm = this.formBuilder.group({
-      title: [this.book.title, [Validators.required]],
-      cover: [this.book.cover, Validators.required],
-      genre: [this.book.genre, Validators.required],
-      author: [this.book.author, Validators.required],
-      content: [this.book.content, Validators.required],
+      title: [this.book.title, [Validators.required,Validators.minLength(1), Validators.maxLength(200)]],
+      cover: [this.book.cover, [Validators.required,Validators.minLength(1), Validators.maxLength(200)]],
+      genre: [this.book.genre, [Validators.required,Validators.minLength(1), Validators.maxLength(100)]],
+      author: [this.book.author, [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
+      content: [this.book.content, [Validators.required]],
     });
   }
-  isload = false;
+
   async loadBook() {
+    this.ngxService.startLoader("loader-01");
     this.book = await this.bookService.getById(this.data.id);
     this.genres = await this.bookService.getGenres();
+    this.ngxService.stopLoader("loader-01");
     this.isload = true;
   }
 
-
   async submit() {
     if (this.editBookForm.valid) {
+      this.ngxService.startLoader("loader-01");
       this.editBook = {
         id: this.book.id,
         title: this.editBookForm.controls['title'].value,
@@ -73,21 +67,22 @@ export class BookEditComponent implements OnInit {
         genre: this.editBookForm.controls['genre'].value,
       }
       this.bookService.createOrUpdate(this.editBook).then((value => {
-        console.log(value);
+        this.alertService.success("Book information has been updated!");
+        this.ngxService.stopLoader("loader-01");
         this.dialogRef.close({ data: this.editBook });
       })).catch(err  =>{
-        console.log(err.error.errors); // It goes here!
-
+        this.ngxService.stopLoader("loader-01");
+        this.alertService.warning(JSON.stringify(err.error.errors));
       })
     };
   }
 
-
   resetForm() {
     this.editBookForm.reset();
-  }
-  closeDialog() {
     this.dialogRef.close();
   }
 
+  closeDialog() {
+    this.dialogRef.close();
+  }
 }

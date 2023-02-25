@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BookService } from 'src/app/core/services/book/book.service';
 import { Book } from 'src/app/shared/models/book';
 import { Review } from 'src/app/shared/models/review';
-
+import { ReviewAction } from 'src/constants/constants';
 @Component({
   selector: 'app-book-view',
   templateUrl: './book-view.component.html',
@@ -12,54 +13,57 @@ import { Review } from 'src/app/shared/models/review';
 export class BookViewComponent implements OnInit {
   book: Book;
   review: Review;
-  reviewNext: Review ;
-  reviewPrevious: Review ;
+  reviewNext: Review;
+  reviewPrevious: Review;
   reviewIndex = 1;
+  isload = false;
+
   constructor(public bookService: BookService,
     public dialogRef: MatDialogRef<BookViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private ngxService: NgxUiLoaderService,
   ) { }
 
-  ngOnInit(): void {
-    this.loadBook()
+  async ngOnInit(): Promise<void> {
+    await this.loadBook()
   }
-  isload = false;
-  async loadBook() {
 
+  async loadBook() {
+    this.ngxService.startLoader("book-view-loader");
     this.book = await this.bookService.getById(this.data.id);
     if (this.book.reviews) {
       this.review = this.book.reviews[0];
       this.reviewNext = this.book.reviews[1];
     }
-
+    this.ngxService.stopLoader("book-view-loader");
     this.isload = true;
   }
 
-  getNextReview(type: string) {
+  getNextReview(type: string): void {
     if (!this.book.reviews)
       return;
 
     switch (type) {
-      case 'next':
-        if(this.reviewNext) {
+      case ReviewAction.Next:
+        if (this.reviewNext) {
           this.reviewIndex++;
           this.reviewPrevious = this.review;
           this.review = this.reviewNext;
           this.reviewNext = this.book.reviews[this.reviewIndex]
         }
         break;
-      case 'previous':
-        if(this.reviewPrevious) {
-        this.reviewIndex--;
-        this.reviewNext = this.review;
-        this.review = this.reviewPrevious;
-        this.reviewPrevious = this.book.reviews[this.reviewIndex-2];
+      case ReviewAction.Previous:
+        if (this.reviewPrevious) {
+          this.reviewIndex--;
+          this.reviewNext = this.review;
+          this.review = this.reviewPrevious;
+          this.reviewPrevious = this.book.reviews[this.reviewIndex - 2];
         }
         break;
     }
   }
 
-  closeDialog() {
+  closeDialog(): void {
     this.dialogRef.close();
   }
 }

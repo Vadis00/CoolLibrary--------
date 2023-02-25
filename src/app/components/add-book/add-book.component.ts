@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from 'ngx-alerts';
 import { BookService } from 'src/app/core/services/book/book.service';
 import { NewBook } from 'src/app/shared/models/book';
 
@@ -20,7 +21,10 @@ export class AddBookComponent implements OnInit {
     genre: ''
   };
 
-  constructor(private formBuilder: FormBuilder, private bookService: BookService) {
+  constructor(
+    private formBuilder: FormBuilder,
+     private bookService: BookService,
+     private alertService: AlertService) {
 
   }
 
@@ -50,15 +54,12 @@ export class AddBookComponent implements OnInit {
       if (bookId) {
         this.newBookEvent.emit(this.newBook);
         this.newBookForm.reset();
-
       }
     }
-
   }
 
   resetForm() {
     this.newBookForm.reset();
-
   }
 
 }

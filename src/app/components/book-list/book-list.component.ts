@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BookService } from 'src/app/core/services/book/book.service';
 import { Book, BookPreview } from 'src/app/shared/models/book';
 
@@ -11,28 +12,29 @@ export class BookListComponent implements OnInit {
   @Output() allBookUploaded = new EventEmitter<BookPreview[]>();
   books: BookPreview[];
   booksSearch: BookPreview[];
-  selectedBooksSorted: string ='title';
+  selectedBooksSorted: string = 'title';
   selectedRecomendedBooks: string;
-
-  booksSorted: any[] = [
-    {value: 'title', viewValue: 'Sorted by Title'},
-    {value: 'author', viewValue: 'Sorted by Author'},
-  ];
-
   genres: string[];
 
-  constructor(public bookService: BookService) {
-   }
+  booksSorted: any[] = [
+    { value: 'title', viewValue: 'Sorted by Title' },
+    { value: 'author', viewValue: 'Sorted by Author' },
+  ];
 
- async ngOnInit() {
+  constructor(public bookService: BookService, private ngxService: NgxUiLoaderService,) {
+  }
+
+  async ngOnInit() {
+    this.ngxService.startLoader("loader-01");
     this.books = await this.bookService.getAll("title");
     this.genres = await this.bookService.getGenres();
     this.booksSearch = this.books;
     this.allBookUploaded.emit(this.books);
+    this.ngxService.stopLoader("loader-01");
   }
 
   async getAllBooks(sorted: string) {
-    this.selectedRecomendedBooks =''
+    this.selectedRecomendedBooks = ''
     this.books = await this.bookService.getAll(sorted);
     this.allBookUploaded.emit(this.books);
   }
@@ -44,7 +46,6 @@ export class BookListComponent implements OnInit {
   }
 
   updateBooks(books: BookPreview[]) {
-this.books = books;
+    this.books = books;
   }
-
 }

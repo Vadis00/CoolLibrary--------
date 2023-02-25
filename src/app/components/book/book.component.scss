@@ -9,10 +9,10 @@
     visibility: visible;
     opacity: 1;
     transition: opacity 0.3s, visibility 0.3s;
-}
+  }
 }
 
-.action{
+.action {
   position: absolute;
   top: 0;
   right: 0;
@@ -23,37 +23,39 @@
   cursor: pointer;
   padding: 5px;
 
-  mat-icon{
+  mat-icon {
     padding: 5px;
   }
 
 }
+
 .cover {
   display: flex;
   justify-content: center;
   align-items: center;
 
   padding: 10px;
+
   .img {
     max-height: 100%;
     max-width: 100%;
   }
 }
 
-.description{
+.description {
   flex: 70%;
   padding: 10px;
 
-  .title{
+  .title {
     text-align: center;
     margin: 0px;
   }
+
   .reactions-wrapper {
     display: flex;
 
-    p{
+    p {
       padding: 10px;
     }
   }
-
 }
