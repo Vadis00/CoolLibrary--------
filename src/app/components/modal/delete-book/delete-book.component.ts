@@ -2,8 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AlertService } from 'ngx-alerts';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BookService } from 'src/app/core/services/book/book.service';
+import { BookPreview } from 'src/app/shared/models/book';
 
 @Component({
   selector: 'app-delete-book',
@@ -12,7 +12,7 @@ import { BookService } from 'src/app/core/services/book/book.service';
 })
 export class DeleteBookComponent implements OnInit {
   public deleteBookForm: FormGroup;
-  bookId: string;
+  book: BookPreview;
   constructor(
     private bookService: BookService,
     private formBuilder: FormBuilder,
@@ -20,7 +20,7 @@ export class DeleteBookComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private alertService: AlertService,) {
 
-    this.bookId = data.id;
+    this.book = data.book;
   }
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class DeleteBookComponent implements OnInit {
 
   deleteBook(): void {
     if (this.deleteBookForm.valid) {
-      this.bookService.deleteById(this.bookId, this.deleteBookForm.controls['secret'].value)
+      this.bookService.deleteById(this.book.id, this.deleteBookForm.controls['secret'].value)
       .then(_ => {
         this.alertService.success('The book was removed from the library');
         this.dialogRef.close({ isDelete: true });

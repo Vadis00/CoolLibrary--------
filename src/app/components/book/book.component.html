@@ -6,15 +6,12 @@
     </div>
     <div class="description">
       <h3 class="title">{{book.title}}</h3>
-      <div class="reactions-wrapper">
+      <div class="reactions-wrapper" *ngIf="book">
         <p class="review">Review {{book.reviewsNumber}}</p>
-        <p class="rating">Rating {{book.rating}}</p>
+       <!--  <p class="rating">Rating {{book.rating | number }}</p> -->
+         <app-rating [itemId]="book.id" [ratingValue]="book.rating" class="rating"></app-rating>
       </div>
     </div>
-    <div class="action">
-     <mat-icon (click)="bookEdit()" class="icon"> edit</mat-icon>
-     <mat-icon (click)="bookView()" class="icon">remove_red_eye</mat-icon>
-     <mat-icon (click)="bookDelete()" class="icon">delete</mat-icon>
-    </div>
+
   </div>
 </div>

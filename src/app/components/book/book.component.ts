@@ -37,7 +37,7 @@ export class BookComponent implements OnInit {
 
   bookDelete(): void {
     this.dialog.open(DeleteBookComponent, {
-      data: { id: this.book.id }
+      data: { book: this.book }
     }).afterClosed()
       .subscribe(response => {
         if (response.isDelete) {
