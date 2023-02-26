@@ -34,7 +34,6 @@ export class RatingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.ratingValue);
     this.ratingAclual = Math.trunc(this.ratingValue).toString();
     this.ratingEmoji[this.ratingAclual] = true;
 

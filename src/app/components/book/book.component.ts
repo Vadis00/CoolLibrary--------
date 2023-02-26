@@ -15,6 +15,7 @@ export class BookComponent implements OnInit {
   @Input() book: BookPreview;
   transform: number;
   @Output() remove = new EventEmitter<BookPreview>();
+
   constructor(
     public bookService: BookService,
     public dialog: MatDialog) { }

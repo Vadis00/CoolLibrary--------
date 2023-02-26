@@ -12,15 +12,11 @@ export class SearchComponent implements OnInit {
   inputText = '';
   constructor() { }
 
-
   onSearchChange(event: any) {
-
     const result = this.searchBook.filter((book) =>
       book.title.toLowerCase().indexOf(event.toLowerCase()) > -1);
 
     this.resultBook.emit(result);
-
-    console.log(result);
   }
   ngOnInit(): void {
   }

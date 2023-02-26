@@ -3,8 +3,16 @@
   <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">
     <mat-expansion-panel-header class="accordion-title">
-      <mat-panel-title  >
-        Add new Book
+      <mat-panel-title >
+        <div *ngIf="!panelOpenState" class="string">
+          <h1 class="greeting en">Do you have a cool book?</h1>
+          <h1 class="greeting it">Click me!</h1>
+          <h1 class="greeting de">Do you have something to read?</h1>
+          <h1 class="greeting en">[Your advertisement can be here!]</h1>
+        </div>
+        <div *ngIf="panelOpenState">
+          <p>Close panel</p>
+        </div>
       </mat-panel-title>
     </mat-expansion-panel-header>
     <form [formGroup]="newBookForm">
@@ -26,7 +34,7 @@
               <mat-form-field class="input-wrapper" appearance="outline">
                 <mat-label>Cover</mat-label>
                 <input  hidden (change)="onUploadChange($event)" #fileInput type="file" id="file" accept="image/*">
-                <input formControlName="cover"  type="text" matInput>
+                <input formControlName="cover" readonly type="text" matInput>
                 <mat-error *ngIf="newBookForm.controls['cover'].touched && newBookForm.controls['cover'].hasError('required')">
                   This field is required
                 </mat-error>

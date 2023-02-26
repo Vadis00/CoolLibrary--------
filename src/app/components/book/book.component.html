@@ -1,4 +1,6 @@
-<div class="card" [style.transform]="'rotate('+ transform + 'deg)'" ><img *ngIf="book.cover" [src]="book.cover"/>
+<div class="card" [style.transform]="'rotate('+ transform + 'deg)'" >
+  <img *ngIf="book.cover" [src]="book.cover" onerror="this.style.display='none'"/>
+  <mat-icon *ngIf="!book.cover">image</mat-icon>
   <h2>{{book.title}}</h2>
   <app-rating (ratingUpdatew)="addOrUpdateBookRate($event)" [itemId]="book.id" [ratingValue]="book.rating"></app-rating>
   <p class="review">Review: {{book.reviewsNumber}}</p>
