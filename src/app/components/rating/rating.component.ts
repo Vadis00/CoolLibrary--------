@@ -30,7 +30,6 @@ export class RatingComponent implements OnInit {
     '5': false,
   } as IDictionary;
 
-
   constructor() {
   }
 

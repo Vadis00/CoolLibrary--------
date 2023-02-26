@@ -55,7 +55,6 @@ export class BookListComponent implements OnInit {
     const index = this.books.indexOf(book);
     const indexBooksSearch = this.booksSearch.indexOf(book);
 
-  /*   this.booksSearch.splice(indexBooksSearch, 1); */
     this.books.splice(index, 1);
   }
 }

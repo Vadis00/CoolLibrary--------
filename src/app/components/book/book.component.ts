@@ -21,13 +21,10 @@ export class BookComponent implements OnInit {
 
   ngOnInit(): void {
     this.transform = Math.random() * (2 - -2) + 2;
-
     if (Math.random() < 0.5)
       this.transform *= -1;
 
-    this.cover = new File([this.book.cover], 'filename', { type: `image/png` });
-
-
+    this.cover = new File([this.book.cover], 'cover', { type: `image/png` });
   }
 
   bookView(): void {

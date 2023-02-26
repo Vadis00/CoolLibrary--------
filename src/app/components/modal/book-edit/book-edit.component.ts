@@ -40,9 +40,9 @@ export class BookEditComponent implements OnInit {
     await this.loadBook()
 
     this.editBookForm = this.formBuilder.group({
-      title: [this.book.title, [Validators.required,Validators.minLength(1), Validators.maxLength(200)]],
-      cover: [this.book.cover, [Validators.required,Validators.minLength(1)]],
-      genre: [this.book.genre, [Validators.required,Validators.minLength(1), Validators.maxLength(100)]],
+      title: [this.book.title, [Validators.required, Validators.minLength(1), Validators.maxLength(200)]],
+      cover: [this.book.cover, [Validators.required, Validators.minLength(1)]],
+      genre: [this.book.genre, [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       author: [this.book.author, [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       content: [this.book.content, [Validators.required]],
     });
@@ -63,7 +63,7 @@ export class BookEditComponent implements OnInit {
         id: this.book.id,
         title: this.editBookForm.controls['title'].value,
         author: this.editBookForm.controls['author'].value,
-        cover: this.base64textString? this.base64textString: this.book.cover,
+        cover: this.base64textString ? this.base64textString : this.book.cover,
         content: this.editBookForm.controls['content'].value,
         genre: this.editBookForm.controls['genre'].value,
       }
@@ -71,7 +71,7 @@ export class BookEditComponent implements OnInit {
         this.alertService.success("Book information has been updated!");
         this.ngxService.stopLoader("loader-book-edit");
         this.dialogRef.close({ data: this.editBook });
-      })).catch(err  =>{
+      })).catch(err => {
         this.ngxService.stopLoader("loader-book-edit");
         this.alertService.warning(JSON.stringify(err.error.errors));
       })
@@ -93,7 +93,6 @@ export class BookEditComponent implements OnInit {
     this.base64textString = ('data:image/png;base64,' + btoa(e.target.result));
     this.ngxService.stopLoader("add-book-loader");
   }
-
 
   resetForm() {
     this.editBookForm.reset();
