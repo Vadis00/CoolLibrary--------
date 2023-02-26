@@ -47,9 +47,10 @@ body {
 }
 
 .card > img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 600/300;
+  width: 80%;
+  max-height: 500px;
+  margin: auto;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
 .card > h2 {

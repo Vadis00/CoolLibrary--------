@@ -64,6 +64,20 @@
   transform: translateY(0%);
 }
 
+.cover-wrapper{
+  display: flex;
+  padding-right: 20px;
+
+  .input-wrapper{
+    width: 100%;
+  }
+
+  button{
+    font-size: 12px;
+    height: 35px;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .row {
     flex-direction: column;
@@ -82,5 +96,18 @@
   }
   .action {
     padding: 10px;
+  }
+
+  .cover-wrapper{
+    flex-direction: column;
+    padding: 0px;
+
+    .input-wrapper{
+      width: auto;
+    }
+
+    button{
+      margin: 0 20px 20px;
+    }
   }
 }

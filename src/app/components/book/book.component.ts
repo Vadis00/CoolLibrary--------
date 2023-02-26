@@ -11,6 +11,7 @@ import { DeleteBookComponent } from '../modal/delete-book/delete-book.component'
   styleUrls: ['./book.component.scss']
 })
 export class BookComponent implements OnInit {
+  cover: File;
   @Input() book: BookPreview;
   transform: number;
   @Output() remove = new EventEmitter<BookPreview>();
@@ -22,7 +23,9 @@ export class BookComponent implements OnInit {
     if (Math.random() < 0.5)
       this.transform *= -1;
 
-    console.log(this.transform);
+    this.cover = new File([this.book.cover], 'filename', {type: `image/png`});
+
+
   }
 
   bookView(): void {

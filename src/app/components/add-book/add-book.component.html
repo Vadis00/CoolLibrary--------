@@ -1,3 +1,4 @@
+<ngx-ui-loader [loaderId]="'add-book-loader'"></ngx-ui-loader>
 <mat-accordion>
   <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">
@@ -21,14 +22,17 @@
                 </mat-error>
               </mat-form-field>
 
+              <div class="cover-wrapper">
               <mat-form-field class="input-wrapper" appearance="outline">
                 <mat-label>Cover</mat-label>
-                <input formControlName="cover" type="text" matInput>
+                <input  hidden (change)="onUploadChange($event)" #fileInput type="file" id="file" accept="image/*">
+                <input formControlName="cover"  type="text" matInput>
                 <mat-error *ngIf="newBookForm.controls['cover'].touched && newBookForm.controls['cover'].hasError('required')">
                   This field is required
                 </mat-error>
               </mat-form-field>
-
+              <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+            </div>
               <mat-form-field class="input-wrapper" appearance="outline">
                 <mat-label>Genre</mat-label>
                 <input formControlName="genre" type="text" matInput>

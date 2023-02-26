@@ -16,6 +16,7 @@ export interface BookPreview {
   author: string;
   rating: number;
   reviewsNumber: number;
+  cover: string;
 }
 
 export interface NewBook {

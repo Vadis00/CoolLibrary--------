@@ -1,4 +1,4 @@
-<div class="card" [style.transform]="'rotate('+ transform + 'deg)'" ><img src="https://picsum.photos/id/380/600/300"/>
+<div class="card" [style.transform]="'rotate('+ transform + 'deg)'" ><img *ngIf="book.cover" [src]="book.cover"/>
   <h2>{{book.title}}</h2>
   <app-rating [itemId]="book.id" [ratingValue]="book.rating"></app-rating>
   <p class="review">Review: {{book.reviewsNumber}}</p>
