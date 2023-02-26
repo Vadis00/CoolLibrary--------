@@ -1,0 +1,36 @@
+<div class="conteiner">
+  <div>
+    <button (click)="closeDialog()" class="close" mat-button>X</button>
+    <h2 class="title">Leave feedback</h2>
+    <form [formGroup]="addReviewForm">
+      <mat-form-field class="input-wrapper" appearance="outline">
+        <mat-label>What's your name</mat-label>
+        <input [formControlName]="'reviewer'" type="text" matInput>
+        <mat-error *ngIf="addReviewForm.controls['reviewer'].touched && addReviewForm.controls['reviewer'].hasError('required')">
+          This field is required
+        </mat-error>
+        <mat-error
+        *ngIf="addReviewForm.controls['reviewer'].touched && addReviewForm.controls['reviewer'].hasError('minlength')" class="textarea-error">
+        The minimum length is 5 characters!
+      </mat-error>
+      </mat-form-field>
+
+      <h3 class="feedback">Leave your feedback</h3>
+      <div class="message">
+        <textarea formControlName="message" placeholder="Feedback"></textarea>
+        <mat-error
+          *ngIf="addReviewForm.controls['message'].touched && addReviewForm.controls['message'].hasError('required')" class="textarea-error">
+          This field is required
+        </mat-error>
+        <mat-error
+        *ngIf="addReviewForm.controls['message'].touched && addReviewForm.controls['message'].hasError('minlength')" class="textarea-error">
+        The minimum length is 5 characters!
+      </mat-error>
+      </div>
+
+      <div class="action">
+        <button (click)="submit()" class="btn" mat-raised-button color="primary">Send</button>
+      </div>
+    </form>
+  </div>
+</div>

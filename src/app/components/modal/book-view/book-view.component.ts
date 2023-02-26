@@ -1,10 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BookService } from 'src/app/core/services/book/book.service';
 import { Book } from 'src/app/shared/models/book';
 import { Review } from 'src/app/shared/models/review';
 import { ReviewAction } from 'src/constants/constants';
+import { AddReviewComponent } from '../add-review/add-review.component';
 @Component({
   selector: 'app-book-view',
   templateUrl: './book-view.component.html',
@@ -22,6 +23,7 @@ export class BookViewComponent implements OnInit {
     public dialogRef: MatDialogRef<BookViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private ngxService: NgxUiLoaderService,
+    public dialog: MatDialog,
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -61,6 +63,17 @@ export class BookViewComponent implements OnInit {
         }
         break;
     }
+  }
+
+  addReview(): void {
+    this.dialog.open(AddReviewComponent, {
+      data: { book: this.book }
+    }).afterClosed()
+    .subscribe(response => {
+      if (response) {
+        this.book.reviews?.push(response.review);
+      }
+    });;
   }
 
   closeDialog(): void {

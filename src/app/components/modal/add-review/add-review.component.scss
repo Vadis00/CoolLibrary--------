@@ -1,0 +1,40 @@
+.conteiner{
+  position: relative;
+}
+
+.close.mat-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: 19px;
+  min-width: auto;
+}
+.title{
+  text-align: center;
+}
+.feedback{
+  text-align: center;
+}
+
+.message{
+  textarea{
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+  }
+}
+
+.input-wrapper{
+  width: 100%;
+}
+
+.action{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+
+  .btn{
+    width: 100px;
+  }
+}

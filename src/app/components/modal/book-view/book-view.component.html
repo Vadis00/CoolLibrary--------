@@ -15,8 +15,8 @@
         </div>
         <div class="reviews" *ngIf="review">
           <div class="reviews-text">
-            <p class="msg"> {{ review.message}}</p>
-            <p class="reviewer">{{ review.reviewer}}</p>
+            <p class="msg">{{review.message}}</p>
+            <p class="reviewer">{{review.reviewer}}</p>
           </div>
           <div class="reviews-action">
             <ul class="pagination modal">
@@ -27,6 +27,9 @@
                 <p [ngClass]="reviewNext ? '': 'disable'" class="next">Next</p>
               </li>
             </ul>
+            <div>
+              <p class="add-review"> Do you like it? <a (click)="addReview()" class="add-review-btn">Add Review</a></p>
+              </div>
           </div>
 
         </div>
