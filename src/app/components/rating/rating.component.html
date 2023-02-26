@@ -149,17 +149,17 @@
         </svg>
       </div>
     </div>
-    <div class="rating">
+    <div class="rating"  [ngClass]="{'hidden' : alreadyDone}" >
       <input  type="radio" name="rating-{{itemId}}" id="rating-5-{{itemId}}">
-      <label  [ngClass]="{'active' : ratingChecked['5']  }" (click)="click(5)"  for="rating-5-{{itemId}}"></label>
+      <label  [ngClass]="{'active' : ratingChecked['5'], 'check' : alreadyDone}" (click)="click(5)"  for="rating-5-{{itemId}}"></label>
       <input type="radio" name="rating-{{itemId}}" id="rating-4-{{itemId}}">
-      <label  [ngClass]="{'active' : ratingChecked['4'] }" (click)="click(4)"  for="rating-4-{{itemId}}"></label>
+      <label  [ngClass]="{'active' : ratingChecked['4'], 'check' : alreadyDone }" (click)="click(4)"  for="rating-4-{{itemId}}"></label>
       <input type="radio" name="rating-{{itemId}}" id="rating-3-{{itemId}}">
-      <label  [ngClass]="{'active' : ratingChecked['3'] }" (click)="click(3)"  for="rating-3-{{itemId}}"></label>
+      <label  [ngClass]="{'active' : ratingChecked['3'], 'check' : alreadyDone }" (click)="click(3)"  for="rating-3-{{itemId}}"></label>
       <input type="radio" name="rating-{{itemId}}" id="rating-2-{{itemId}}">
-      <label [ngClass]="{'active' : ratingChecked['2'] }" (click)="click(2)"  for="rating-2-{{itemId}}"></label>
+      <label [ngClass]="{'active' : ratingChecked['2'], 'check' : alreadyDone }" (click)="click(2)"  for="rating-2-{{itemId}}"></label>
       <input type="radio" name="rating-{{itemId}}" id="rating-1-{{itemId}}">
-      <label  [ngClass]="{'active' : ratingChecked['1'] }" (click)="click(1)"  for="rating-1-{{itemId}}"></label>
+      <label  [ngClass]="{'active' : ratingChecked['1'], 'check' : alreadyDone }" (click)="click(1)"  for="rating-1-{{itemId}}"></label>
     </div>
 
   </div>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LocalStorageService } from 'src/app/core/services/localStorage.service';
 
 @Component({
   selector: 'app-rating',
@@ -8,6 +9,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 export class RatingComponent implements OnInit {
   @Input() ratingValue: number = 0;
+  alreadyDone: boolean = false;
+
   @Input() itemId: number = 0;
   @Output() ratingUpdatew = new EventEmitter<any>();
   ratingAclual: string;
@@ -30,10 +33,16 @@ export class RatingComponent implements OnInit {
     '5': false,
   } as IDictionary;
 
-  constructor() {
+  constructor(private localStorageService: LocalStorageService) {
   }
 
   ngOnInit(): void {
+
+    if (this.localStorageService.contains(this.itemId.toString())) {
+      this.ratingValue = Number(this.localStorageService.get(this.itemId.toString()));
+      this.alreadyDone = true;
+    }
+
     this.ratingAclual = Math.trunc(this.ratingValue).toString();
     this.ratingEmoji[this.ratingAclual] = true;
 
@@ -56,6 +65,8 @@ export class RatingComponent implements OnInit {
 
     }
 
+    this.alreadyDone = true;
+    this.localStorageService.set(this.itemId.toString(), rating.toString());
     this.ratingUpdatew.emit(rating);
   }
 }

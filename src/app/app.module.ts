@@ -27,6 +27,7 @@ import { NgxUiLoaderConfig, NgxUiLoaderModule, PB_DIRECTION, POSITION, SPINNER }
 import { DeleteBookComponent } from './components/modal/delete-book/delete-book.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { AddReviewComponent } from './components/modal/add-review/add-review.component';
+import { LocalStorageService } from './core/services/localStorage.service';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsPosition: POSITION.centerCenter,
@@ -70,7 +71,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AlertModule.forRoot({ maxMessages: 5, timeout: 5000, positionX: 'right', positionY: 'top' }),
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
   ],
-  providers: [BookService],
+  providers: [BookService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
