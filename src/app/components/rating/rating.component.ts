@@ -57,6 +57,8 @@ export class RatingComponent implements OnInit {
       }
 
     }
+
+    this.ratingUpdatew.emit(rating);
   }
 }
 

@@ -16,6 +16,7 @@ export class BookEditComponent implements OnInit {
   isload = false;
   book: Book;
   public editBookForm: FormGroup;
+  base64textString: string;
   genres: string[];
   editBook: NewBook = {
     title: '',
@@ -40,7 +41,7 @@ export class BookEditComponent implements OnInit {
 
     this.editBookForm = this.formBuilder.group({
       title: [this.book.title, [Validators.required,Validators.minLength(1), Validators.maxLength(200)]],
-      cover: [this.book.cover, [Validators.required,Validators.minLength(1), Validators.maxLength(200)]],
+      cover: [this.book.cover, [Validators.required,Validators.minLength(1)]],
       genre: [this.book.genre, [Validators.required,Validators.minLength(1), Validators.maxLength(100)]],
       author: [this.book.author, [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       content: [this.book.content, [Validators.required]],
@@ -62,7 +63,7 @@ export class BookEditComponent implements OnInit {
         id: this.book.id,
         title: this.editBookForm.controls['title'].value,
         author: this.editBookForm.controls['author'].value,
-        cover: this.editBookForm.controls['cover'].value,
+        cover: this.base64textString? this.base64textString: this.book.cover,
         content: this.editBookForm.controls['content'].value,
         genre: this.editBookForm.controls['genre'].value,
       }
@@ -76,6 +77,23 @@ export class BookEditComponent implements OnInit {
       })
     };
   }
+
+  onUploadChange(evt: any) {
+    const file = evt.target.files[0];
+    if (file) {
+      (this.editBookForm.controls['cover']).patchValue(evt.target.files[0].name)
+      this.ngxService.startLoader("add-book-loader");
+      const reader = new FileReader();
+      reader.onload = this.handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
+    }
+  }
+
+  private handleReaderLoaded(e: any) {
+    this.base64textString = ('data:image/png;base64,' + btoa(e.target.result));
+    this.ngxService.stopLoader("add-book-loader");
+  }
+
 
   resetForm() {
     this.editBookForm.reset();

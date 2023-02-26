@@ -55,6 +55,20 @@
   }
 }
 
+.cover-wrapper{
+  display: flex;
+
+  .input-wrapper{
+    width: 100%;
+    padding-right: 10px;
+  }
+
+  button{
+    font-size: 12px;
+    height: 55px;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .conteiner {
     width: auto;

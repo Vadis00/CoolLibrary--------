@@ -4,7 +4,7 @@
     <button (click)="closeDialog()" class="close" mat-button>X</button>
     <div class="row">
       <div class="cover">
-        <img class="img" src="https://klike.net/uploads/posts/2019-06/1561182204_1.jpg" alt="{{book.title}}">
+        <img class="img" [src]="book.cover" alt="{{book.title}}">
       </div>
       <div class="description">
         <h2 class="title">{{book.title}}</h2>

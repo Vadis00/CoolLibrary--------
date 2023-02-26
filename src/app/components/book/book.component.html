@@ -1,6 +1,6 @@
 <div class="card" [style.transform]="'rotate('+ transform + 'deg)'" ><img *ngIf="book.cover" [src]="book.cover"/>
   <h2>{{book.title}}</h2>
-  <app-rating [itemId]="book.id" [ratingValue]="book.rating"></app-rating>
+  <app-rating (ratingUpdatew)="addOrUpdateBookRate($event)" [itemId]="book.id" [ratingValue]="book.rating"></app-rating>
   <p class="review">Review: {{book.reviewsNumber}}</p>
   <button (click)="bookView()" class="btn" mat-raised-button color="primary">Read More</button>
 

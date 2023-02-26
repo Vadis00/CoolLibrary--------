@@ -63,8 +63,8 @@ export class BookService {
     return await lastValueFrom(response);
   }
 
-  public async addRating(id: string, rating: Rating): Promise<any> {
-    const url = `${environment.baseApiUrl}/api/books/${id}/review"`;
+  public async addRating(id: number, rating: Rating): Promise<any> {
+    const url = `${environment.baseApiUrl}/api/books/${id}/rate`;
     const response = this.httpClient.put<BookPreview>(url, rating);
 
     return await lastValueFrom(response);
