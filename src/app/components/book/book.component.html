@@ -1,17 +1,11 @@
-<div class="book-card">
-  <div class="row">
-    <div class="cover">
-      <img class="img" src="https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
-        alt="{{book.title}}">
-    </div>
-    <div class="description">
-      <h3 class="title">{{book.title}}</h3>
-      <div class="reactions-wrapper" *ngIf="book">
-        <p class="review">Review {{book.reviewsNumber}}</p>
-       <!--  <p class="rating">Rating {{book.rating | number }}</p> -->
-         <app-rating [itemId]="book.id" [ratingValue]="book.rating" class="rating"></app-rating>
-      </div>
-    </div>
+<div class="card" [style.transform]="'rotate('+ transform + 'deg)'" ><img src="https://picsum.photos/id/380/600/300"/>
+  <h2>{{book.title}}</h2>
+  <app-rating [itemId]="book.id" [ratingValue]="book.rating"></app-rating>
+  <p class="review">Review: {{book.reviewsNumber}}</p>
+  <button (click)="bookView()" class="btn" mat-raised-button color="primary">Read More</button>
 
-  </div>
+  <div class="action">
+    <mat-icon (click)="bookEdit()" class="icon"> edit</mat-icon>
+    <mat-icon (click)="bookDelete()" class="icon">delete</mat-icon>
+   </div>
 </div>

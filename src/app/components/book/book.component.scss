@@ -1,18 +1,74 @@
-.row {
-  display: flex;
-  position: relative;
-  height: 100px;
-  margin: 10px;
-  border: 1px solid #413832;
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap");
 
-  &:hover .action {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.3s, visibility 0.3s;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.action {
+html {
+  font: 500 100%/1.4 system-ui;
+  background-color: #ccc;
+}
+
+body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0rem;
+  padding: 1rem;
+}
+
+.card {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 2rem;
+  background: #f8f3e8;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+    animation: fronte .3s linear forwards;
+
+    .btn{
+      display:block;
+      transition: opacity 2.5s, visibility 2.5s;
+      opacity: 1;
+      visibility: visible;
+    }
+  .action {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2.5s, visibility 2.5s;
+  }
+}
+}
+
+.card > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 600/300;
+}
+
+.card > h2 {
+  margin-top: 1rem;
+  font-family: "Kalam", cursive;
+  font-weight: normal;
+  font-size: 2rem;
+  color: #4a4a7d;
+  text-align: center;
+}
+
+.card > p {
+  font-family: "Kalam", cursive;
+  font-size: 1rem;
+  color: #5e5e89;
+  text-align: center;
+}
+
+ .action {
   position: absolute;
   top: 0;
   right: 0;
@@ -26,63 +82,29 @@
   mat-icon {
     padding: 5px;
   }
-
-}
-
-.cover {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 10px;
-
-  .img {
-    max-height: 100%;
-    max-width: 100%;
-  }
-}
-
-.description {
-  flex: 70%;
-  padding: 10px;
-
-  .title {
-    text-align: center;
-    margin: 0px;
-  }
-
-  .reactions-wrapper {
-    display: flex;
-
-    p {
-      padding: 10px;
-    }
-  }
 }
 
 .icon{
   color: #413832;
-
   &:hover{
     color: dimgrey;
   }
 }
 
-.rating{
-  margin-left: auto;
-  position: absolute;
-
-  right: 0;
-  display: flex;
+.btn{
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+  cursor: pointer;
   padding: 5px;
 }
-@media screen and (max-width: 900px) {
-  .title {
-   font-size: 12px;
-  }
 
-  .description{
-    flex: 100%;
-    padding: 0;
-  }
+.review{
+  padding-top: 20px;
+}
+
+@keyframes fronte {
+  from { z-index: 0; opacity: 0.5; }
+  to { z-index: 2; transform: scale(1.1); opacity: 1; }
 }

@@ -12,10 +12,17 @@ import { DeleteBookComponent } from '../modal/delete-book/delete-book.component'
 })
 export class BookComponent implements OnInit {
   @Input() book: BookPreview;
+  transform: number;
   @Output() remove = new EventEmitter<BookPreview>();
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.transform = Math.random() * (2- -2) + 2;
+
+    if (Math.random() < 0.5)
+      this.transform *= -1;
+
+    console.log(this.transform);
   }
 
   bookView(): void {
@@ -45,4 +52,5 @@ export class BookComponent implements OnInit {
         }
       });
   }
+
 }
