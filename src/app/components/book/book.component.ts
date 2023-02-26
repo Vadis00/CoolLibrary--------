@@ -42,7 +42,8 @@ export class BookComponent implements OnInit {
     }).afterClosed()
       .subscribe(response => {
         if (response) {
-          this.book.title = response.data.title
+          this.book.title = response.data.title;
+          this.book.cover = response.data.cover;
         }
       });;
   }

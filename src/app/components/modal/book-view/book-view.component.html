@@ -11,7 +11,7 @@
 
         <div class="reactions-wrapper">
           <p class="rating"><b>Author:</b> {{book.author}}</p>
-          <p class="rating"><b>Rating:</b> {{book.rating}}</p>
+          <p class="rating"><b>Rating:</b> {{book.rating | number}}</p>
         </div>
         <div class="reviews" *ngIf="review">
           <div class="reviews-text">
