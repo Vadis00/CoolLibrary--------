@@ -70,6 +70,7 @@ export class AddBookComponent implements OnInit {
       }
       this.bookService.createOrUpdate(this.newBook).then((response) => {
         if (response) {
+          this.newBook.id = response;
           this.newBookEvent.emit(this.newBook);
           this.newBookForm.reset();
           this.alertService.success('The book has been added! Thank you for your contribution to the development of our library!');

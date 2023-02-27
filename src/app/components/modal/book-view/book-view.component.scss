@@ -5,6 +5,7 @@
 .conteiner {
   max-height: 100vh;
   position: relative;
+  min-width: 500px;
 }
 
 .row {
@@ -172,6 +173,7 @@
 }
 
 .add-review {
+  text-align: center;
   a {
     color: #673ab7;
     cursor: pointer;
@@ -212,6 +214,7 @@
   position: relative;
   transform: scale(1.5);
   transition: all .3s ease-out;
+  cursor: pointer;
   &:hover{
     background-color: rgba(17, 17, 17, .8);
   }
@@ -256,6 +259,9 @@
 }
 
 @media screen and (max-width: 900px) {
+  .conteiner{
+    min-width: auto;
+  }
   .row {
     flex-direction: column;
   }

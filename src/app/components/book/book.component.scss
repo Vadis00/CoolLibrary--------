@@ -61,6 +61,8 @@ body {
   font-size: 2rem;
   color: #4a4a7d;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card > p {
