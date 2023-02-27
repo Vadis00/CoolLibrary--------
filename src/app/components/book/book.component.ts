@@ -30,9 +30,13 @@ export class BookComponent implements OnInit {
 
   bookView(): void {
     this.dialog.open(BookViewComponent, {
-      data: { id: this.book.id }
+      data: { id: this.book.id },
+      hasBackdrop: true,
+      backdropClass: 'backdropBackground'
     });
   }
+
+
 
   bookEdit(): void {
     this.dialog.open(BookEditComponent, {

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .conteiner {
   max-height: 100vh;
   position: relative;
@@ -167,13 +171,90 @@
   min-width: auto;
 }
 
-.add-review{
-
-  a{
+.add-review {
+  a {
     color: #673ab7;
     cursor: pointer;
   }
 }
+
+.read-mode {
+  height: 90vh;
+
+  .book-card {
+    display: none;
+  }
+
+  .content-wrapper {
+    height: 100%;
+  }
+
+  .content {
+    max-height: 100%;
+    height: 90%;
+  }
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 56px;
+  height: 26px;
+  background-color: rgba(17, 17, 17, .4);
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+  transition: all .3s ease-out;
+  &:hover{
+    background-color: rgba(17, 17, 17, .8);
+  }
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:focus+.label .ball {
+  transform: translateX(32px);
+}
+
+.mode {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  display: flex;
+  cursor: pointer;
+  padding: 5px;
+
+  .read,
+  .view {
+    width: 22px;
+  }
+}
+
+::ng-deep .backdropBackground {
+  filter: blur(10px);
+  background-color: rgb(212, 182, 58) !important;
+  ;
+  opacity: 0.15 !important;
+
+}
+
 @media screen and (max-width: 900px) {
   .row {
     flex-direction: column;
@@ -188,11 +269,12 @@
     font-size: 16px;
   }
 
-  .reviews-text{
-    .msg{
+  .reviews-text {
+    .msg {
       font-size: 12px;
     }
   }
+
   .reactions-wrapper {
     font-size: 12px;
   }

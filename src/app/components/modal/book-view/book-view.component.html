@@ -1,5 +1,5 @@
 <ngx-ui-loader [loaderId]="'book-view-loader'"></ngx-ui-loader>
-<div class="conteiner" *ngIf="isload">
+<div class="conteiner" *ngIf="isload" [ngClass]="{'read-mode' : readMode}">
   <div class="book-card">
     <button (click)="closeDialog()" class="close" mat-button>X</button>
     <div class="row">
@@ -29,17 +29,26 @@
             </ul>
             <div>
               <p class="add-review"> Do you like it? <a (click)="addReview()" class="add-review-btn">Add Review</a></p>
-              </div>
+            </div>
           </div>
 
         </div>
       </div>
     </div>
   </div>
-  <div>
+  <div class="content-wrapper">
     <h3 class="read">Read online</h3>
     <div class="content">
       {{book.content}}
     </div>
   </div>
+</div>
+
+<div class="mode">
+  <input type="checkbox" class="checkbox" id="checkbox">
+  <label (click)="readMode = !readMode" for="checkbox" class="label">
+    <img [ngStyle]="{'opacity': readMode ? '1' : '0' }" class="view" src="../../../../assets/img/icons//view.png">
+    <img [ngStyle]="{'opacity': readMode ? '0' : '1' }" class="read" src="../../../../assets/img/icons/read.png">
+    <div  class='ball'> </div>
+  </label>
 </div>

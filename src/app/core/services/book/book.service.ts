@@ -1,22 +1,34 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Book, BookPreview, NewBook } from 'src/app/shared/models/book';
 import { environment } from 'src/environments/environment.local';
-import { lastValueFrom, } from 'rxjs';
+import { lastValueFrom, Observable, } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { NewReview } from 'src/app/shared/models/review';
 import { Rating } from 'src/app/shared/models/rating';
+import { Router, } from '@angular/router';
+import { AlertService } from 'ngx-alerts';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Injectable()
 export class BookService {
-  constructor(private httpClient: HttpClient) {
+  constructor(
+    private httpClient: HttpClient,
+    private alertService: AlertService,
+    private ngxService: NgxUiLoaderService,
+    private router: Router) {
   }
+  public async getAll(order: string): Promise<BookPreview[] | any> {
+    try {
+      const queryParams = `?order=${encodeURIComponent(order)}`
+      const url = `${environment.baseApiUrl}/api/books/${queryParams}`;
+      const response = this.httpClient.get<BookPreview[]>(url);
+      return await lastValueFrom(response);
+    } catch (e: any) {
+      this.alertService.danger(e.message);
+      this.ngxService.stopAll();
+      this.router.navigate(['error'], { });
 
-  public async getAll(order: string): Promise<BookPreview[]> {
-    const queryParams = `?order=${encodeURIComponent(order)}`
-    const url = `${environment.baseApiUrl}/api/books/${queryParams}`;
-    const response = this.httpClient.get<BookPreview[]>(url);
-
-    return await lastValueFrom(response);
+    }
   }
 
   public async getTopRate(ganre: string): Promise<BookPreview[]> {

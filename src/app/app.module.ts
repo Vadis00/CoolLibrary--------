@@ -28,6 +28,7 @@ import { DeleteBookComponent } from './components/modal/delete-book/delete-book.
 import { RatingComponent } from './components/rating/rating.component';
 import { AddReviewComponent } from './components/modal/add-review/add-review.component';
 import { LocalStorageService } from './core/services/localStorage.service';
+import { PageErrorComponent } from './components/page-error/page-error.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsPosition: POSITION.centerCenter,
@@ -52,6 +53,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     DeleteBookComponent,
     RatingComponent,
     AddReviewComponent,
+    PageErrorComponent,
 
   ],
   imports: [

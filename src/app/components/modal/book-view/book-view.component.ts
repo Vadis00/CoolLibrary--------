@@ -18,6 +18,7 @@ export class BookViewComponent implements OnInit {
   reviewPrevious: Review;
   reviewIndex = 1;
   isload = false;
+  readMode = false;
 
   constructor(public bookService: BookService,
     public dialogRef: MatDialogRef<BookViewComponent>,

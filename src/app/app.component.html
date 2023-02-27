@@ -1,5 +1,6 @@
 <ngx-alerts></ngx-alerts>
 <div class="conteiner">
+  <router-outlet></router-outlet>
   <app-header></app-header>
   <app-add-book (newBookEvent)="pushNewBook($event)"></app-add-book>
   <app-book-list (allBookUploaded)="allBookUploaded($event)" class="book-list"></app-book-list>
